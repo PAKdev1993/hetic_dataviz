@@ -1,0 +1,190 @@
+{
+	"sheetMarkpoints": {
+		"sheet_WEB_2017": {
+			"title": "WEB 2017",
+			"nbLines": 42,
+			"beginLine": 8,
+			"props": {
+				"promo": "WEB",
+				"annee_promo": "2017",
+				"civilite": "B",
+				"date_sortie_hetic": "C",
+				"code_postal_residence": "D",
+				"ville": "E",
+				"pays": "F",
+				"etudes_avant_hetic": "G",
+				"situation_pro_sortie_hetic": "I",
+				"jobs_notables_exerces": "H"
+			},
+			"props_periode_6_mois": {
+				"groupe_socio_pro": "L",
+				"fonction": "M",
+				"contrat": "K",
+				"secteur": "N",
+				"fourchette_salaire": "O"
+			},
+			"props_periode_actuelle": {
+				"groupe_socio_pro": null,
+				"fonction": null,
+				"contrat": null,
+				"secteur": null,
+				"fourchette_salaire": null
+			}
+		},
+		"sheet_WM_2017": {
+			"title": "WM 2017",
+			"nbLines": 29,
+			"beginLine": 8,
+			"props": {
+				"promo": "Web Marketing",
+				"annee_promo": "2017",
+				"civilite": "B",
+				"date_sortie_hetic": "C",
+				"code_postal_residence": "D",
+				"ville": "E",
+				"pays": "F",
+				"etudes_avant_hetic": "G",
+				"situation_pro_sortie_hetic": "I",
+				"jobs_notables_exerces": "H"
+			},
+			"props_periode_6_mois": {
+				"groupe_socio_pro": "M",
+				"fonction": "N",
+				"contrat": "L",
+				"secteur": "O",
+				"fourchette_salaire": "P"
+			},
+			"props_periode_actuelle": {
+				"groupe_socio_pro": "R",
+				"fonction": null,
+				"contrat": "Q",
+				"secteur": null,
+				"fourchette_salaire": null
+			}
+		},
+		"sheet_WM_2016": {
+			"title": "WM 2016",
+			"nbLines": 18,
+			"beginLine": 8,
+			"props": {
+				"promo": "Web Marketing",
+				"annee_promo": "2016",
+				"civilite": "B",
+				"date_sortie_hetic": "C",
+				"code_postal_residence": "D",
+				"ville": "E",
+				"pays": "F",
+				"etudes_avant_hetic": "G",
+				"situation_pro_sortie_hetic": "I",
+				"jobs_notables_exerces": "H"
+			},
+			"props_periode_6_mois": {
+				"groupe_socio_pro": "M",
+				"fonction": "N",
+				"contrat": "L",
+				"secteur": "O",
+				"fourchette_salaire": "P"
+			},
+			"props_periode_actuelle": {
+				"groupe_socio_pro": "R",
+				"fonction": "S",
+				"contrat": "Q",
+				"secteur": "U",
+				"fourchette_salaire": "T"
+			}
+		},
+		"sheet_WEB_2016": {
+			"title": "WEB 2016",
+			"nbLines": 39,
+			"beginLine": 5,
+			"props": {
+				"promo": "Web",
+				"annee_promo": "2016",
+				"civilite": "B",
+				"date_sortie_hetic": null,
+				"code_postal_residence": "C",
+				"ville": "D",
+				"pays": "E",
+				"etudes_avant_hetic": "F",
+				"situation_pro_sortie_hetic": "H",
+				"jobs_notables_exerces": "G"
+			},
+			"props_periode_6_mois": {
+				"groupe_socio_pro": "K",
+				"fonction": "L",
+				"contrat": "J",
+				"secteur": "M",
+				"fourchette_salaire": "N"
+			},
+			"props_periode_actuelle": {
+				"groupe_socio_pro": "P",
+				"fonction": "Q",
+				"contrat": "O",
+				"secteur": "S",
+				"fourchette_salaire": "R"
+			}
+		},
+		"sheet_WM_2015": {
+			"title": "WM 2015",
+			"nbLines": 15,
+			"beginLine": 8,
+			"props": {
+				"promo": "Web Marketing",
+				"annee_promo": "2015",
+				"civilite": "B",
+				"date_sortie_hetic": "C",
+				"code_postal_residence": "D",
+				"ville": "E",
+				"pays": "F",
+				"etudes_avant_hetic": "G",
+				"situation_pro_sortie_hetic": "I",
+				"jobs_notables_exerces": "H"
+			},
+			"props_periode_6_mois": {
+				"groupe_socio_pro": "L",
+				"fonction": "M",
+				"contrat": "K",
+				"secteur": "N",
+				"fourchette_salaire": "O"
+			},
+			"props_periode_actuelle": {
+				"groupe_socio_pro": "Q",
+				"fonction": "R",
+				"contrat": "P",
+				"secteur": "T",
+				"fourchette_salaire": "S"
+			}
+		},
+    	"sheet_WEB_2015": {
+            "title": "WEB 2015",
+            "nbLines": 38,
+            "beginLine": 8,
+            "props": {
+                "promo": "Web",
+                "annee_promo": "2015",
+                "civilite": "B",
+                "date_sortie_hetic": "C",
+                "code_postal_residence": "D",
+                "ville": "E",
+                "pays": "F",
+                "etudes_avant_hetic": "G",
+                "situation_pro_sortie_hetic": "I",
+                "jobs_notables_exerces": "H"
+            },
+            "props_periode_6_mois": {
+                "groupe_socio_pro": "L",
+                "fonction": "M",
+                "contrat": "K",
+                "secteur": "N",
+                "fourchette_salaire": "O"
+            },
+            "props_periode_actuelle": {
+                "groupe_socio_pro": "Q",
+                "fonction": "R",
+                "contrat": "P",
+                "secteur": "T",
+                "fourchette_salaire": "S"
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "name": "utilisateur/src",
+    "authors": [
+        {
+            "name": "pakdev1993",
+            "email": "perso.pakpak@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.6"
+    }
+}
