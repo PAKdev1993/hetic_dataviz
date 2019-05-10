@@ -16,6 +16,7 @@
         $dataInsertionObject->extractDatas();
     }
     else{
+        var_dump(parse_url(getenv('DATABASE_URL')));
         echo ('<h1>HELLO THiiiiiiOOOoo</h1>');
     }
 ?>

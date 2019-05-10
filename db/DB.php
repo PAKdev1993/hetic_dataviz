@@ -14,7 +14,8 @@ class DB{
     public static function getInstance(){
         if (!isset(self::$instance))
         {
-            $dsn =  'mysql:host=' . Config::read('db.host') .
+            //$dsn =  'mysql:host=' . Config::read('db.host') .
+            $dsn =  'pgsql:host=' . Config::read('db.host') .
                     ';dbname='    . Config::read('db.basename') .
                     ';charset=utf8';         // building data source name 
             $user =     Config::read('db.user'); // getting DB user from config
