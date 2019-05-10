@@ -1,11 +1,11 @@
 <?php
-    require "./vendor/autoload.php";
+    require_once "./vendor/autoload.php";
 
     use \PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
-    require "./helpers/CustomExcellReaderFilter.php";
-    require "./DataInsertionController.php";
-    require "./db/DB.php";
+    require_once "./helpers/CustomExcellReaderFilter.php";
+    require_once "./DataInsertionController.php";
+    require_once "./db/DB.php";
 
     if(isset($_GET['insertion'])){
         /** INSERTIO NDES DONNEES */
