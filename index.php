@@ -5,6 +5,7 @@
 
     require "./helpers/CustomExcellReaderFilter.php";
     require "./DataInsertionController.php";
+    require "./db/DB.php";
 
     if(isset($_GET['insertion'])){
         /** INSERTIO NDES DONNEES */
@@ -17,6 +18,7 @@
     }
     else{
         var_dump(parse_url(getenv('DATABASE_URL')));
+        var_dump(DB::getInstance());
         echo ('<h1>HELLO THiiiiiiOOOoo</h1>');
     }
 ?>
