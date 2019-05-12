@@ -1,0 +1,51 @@
+{
+    "Dataviz1.1" : [
+        {
+            "Bac pro": "9%",
+            "Bac général & technologique" : "40%",
+            "Etudes supérieures" : "20%",
+            "Sans diplome" : "10%",
+            "Anciens salarié / chômeur" : "21%"            
+        }
+    ],
+    "Dataviz1.2" : [
+        {
+            "Evo Bac pro par rapport a 2015" : [
+                {
+                    "2016":"+5%",
+                    "2017":"+8%"
+                }
+            ],
+            "Evo Bac général & techno par rapport a 2015" : [
+                {
+                    "2016":"+5%",
+                    "2017":"+10%"
+                }
+            ],
+            "Evo Etudes supérieures par rapport a 2015" : [
+                {
+                    "2016":"-5%",
+                    "2017":"+8%"
+                }
+            ],
+            "Evo Sans diplômeso par rapport a 2015" : [
+                {
+                    "2016":"+5%",
+                    "2017":"+20%"
+                }
+            ],
+            "Evo Anciens salarié / chômeur par rapport a 2015" : [
+                {
+                    "2016":"+10%",
+                    "2017":"+30%"
+                }
+            ]
+        }
+    ],
+    "Dataviz1.3" : [
+        {
+            "Hommes" : "55%",
+            "Femmes" : "45%"
+        }
+    ]
+}
