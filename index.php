@@ -6,6 +6,7 @@
     require_once "./helpers/CustomExcellReaderFilter.php";
     require_once "./DataInsertionController.php";
     require_once "./db/DB.php";
+    require_once "./datavizs/DatavizFactory.php";
 
     if(isset($_GET['insertion'])){
         /** INSERTIO NDES DONNEES */
@@ -15,6 +16,11 @@
 
         $dataInsertionObject = new DataInsertionController($inputFileName, $reader);
         $dataInsertionObject->extractDatas();
+    }
+    if(isset($_GET['dataviz'])){
+        $dataVizNum = $_GET['dataviz'];
+        $datavizObject = DatavizFactory::get($dataVizNum);
+        echo json_encode($datavizObject->getData());
     }
     else{
         var_dump(parse_url(getenv('DATABASE_URL')));

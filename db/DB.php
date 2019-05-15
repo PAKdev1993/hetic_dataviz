@@ -5,11 +5,6 @@ class DB{
 
     private static $instance;
 
-    private function __construct()
-    {
-        
-    }
-
     //Singleton pattern
     public static function getInstance(){
         if (!isset(self::$instance))
