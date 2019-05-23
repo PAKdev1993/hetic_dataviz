@@ -1,5 +1,4 @@
 <?php
-require_once('./Autoloader.php');
 $router = new Router();
 
 $routeInfos = explode('/', $_SERVER['REQUEST_URI']);

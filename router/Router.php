@@ -6,7 +6,7 @@ use src\Controller\ControllerFactory;
 
 class Router
 {
-    const PATH_ROUTES_YAML = "./Config/routes.yaml";
+    const PATH_ROUTES_YAML = "./config/routes.yaml";
     const ROUTE_NOT_FOUND = 1;
 
     const HEAD_404 = "HTTP/1.0 404 Not Found";
