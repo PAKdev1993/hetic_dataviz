@@ -72,6 +72,10 @@ class ComposerStaticInit3a6f824677340fb3db1635329dde73bc
     );
 
     public static $prefixLengthsPsr4 = array (
+        's' => 
+        array (
+            'src\\' => 4,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php70\\' => 23,
@@ -84,6 +88,10 @@ class ComposerStaticInit3a6f824677340fb3db1635329dde73bc
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\Debug\\' => 24,
             'Silex\\' => 6,
+        ),
+        'R' => 
+        array (
+            'Route\\' => 6,
         ),
         'P' => 
         array (
@@ -99,11 +107,16 @@ class ComposerStaticInit3a6f824677340fb3db1635329dde73bc
         'C' => 
         array (
             'Csanquer\\Silex\\PdoServiceProvider\\' => 34,
+            'Config\\' => 7,
             'Complex\\' => 8,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'src\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
         'Symfony\\Polyfill\\Php70\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php70',
@@ -144,6 +157,10 @@ class ComposerStaticInit3a6f824677340fb3db1635329dde73bc
         array (
             0 => __DIR__ . '/..' . '/silex/silex/src/Silex',
         ),
+        'Route\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/router',
+        ),
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
@@ -167,6 +184,10 @@ class ComposerStaticInit3a6f824677340fb3db1635329dde73bc
         'Csanquer\\Silex\\PdoServiceProvider\\' => 
         array (
             0 => __DIR__ . '/..' . '/csanquer/pdo-service-provider/src',
+        ),
+        'Config\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/config',
         ),
         'Complex\\' => 
         array (

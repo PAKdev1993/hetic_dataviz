@@ -9,5 +9,12 @@
     "require": {
         "phpoffice/phpspreadsheet": "^1.6",
         "csanquer/pdo-service-provider": "~1.1dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Config\\": "config/",   
+            "Route\\": "router/",
+            "src\\": "src/"   
+        }
     }
 }
