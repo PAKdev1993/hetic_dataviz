@@ -7,7 +7,7 @@ class Fourchette extends Entite
     private $id;
     private $fourchette;
 
-    public function __construct( array $pros ) {
+    public function __construct( array $props ) {
         $this->id =   isset( $props['id'] ) ? $props['id'] : self::UNKNOW_ID;
         $this->fourchette = $props['fourchette'];
 
@@ -63,7 +63,7 @@ class Fourchette extends Entite
         }
     }
 
-    protected function isEmpty() {
-        return (bool) $this->fourchette;
+    public function isEmpty() {
+        return (bool) !$this->fourchette;
     }
 }

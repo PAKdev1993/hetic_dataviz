@@ -1,14 +1,14 @@
 <?php
-
 namespace src\Dataviz\DataInsertion;
 
+use src\Dataviz\Entities\Entite;
 use src\Dataviz\Entities\EntityFactory;
-use src\model\Entities\DAOFactory;
+use src\model\DAOFactory;
 
 class ExcellDataFetcher implements InsertionInterface
 {
-    const PATH_DATA = './data/bd.xlsx';
-    const PATH_DATA_MAPPING = './data/bd_mapping.json';
+    const PATH_DATA = './../data/bd.xlsx';
+    const PATH_DATA_MAPPING = './../data/bd_mapping.json';
 
     private $mappingFile;
     private $excellReader;
@@ -29,49 +29,99 @@ class ExcellDataFetcher implements InsertionInterface
     private function getSpeadsheets() {
         $this->excellReader->setReadDataOnly(true); // Tell the Reader that we want to Read Only
         //if ($customExcellReader) $excellReader->setReadFilter($customExcellReader);// Tell the Reader that we want to use the Read Filter
-        return $excellReaderLoaded->load(self::PATH_DATA); // Load Spreadsheet
+        return $this->excellReader->load(self::PATH_DATA); // Load Spreadsheet
     }
 
-    private function extractEleve($sheetMapping, $sheet, $line, $periode) {
+    private function extractEleve($sheetMapping, $sheet, $line) {
         $props = array();
 
         $props['promo'] = $sheetMapping->props->promo;
         $props['annee_promo'] = $sheetMapping->props->annee_promo;
 
         $cellToRead = (string) $sheetMapping->props->civilite . $line;
-        $props['civilite'] = $currentSheet->getCell($cellToRead, false)->getValue();
+        if( $sheet->getCell($cellToRead, false) ) {
+            $props['civilite'] = $sheet->getCell($cellToRead, false)->getValue();
+        }
+        else{
+            $props['civilite'] = Entite::WORD_NC;
+        }
 
         $cellToRead = (string) $sheetMapping->props->date_sortie_hetic . $line;
-        $props['date_sortie_hetic'] = $currentSheet->getCell($cellToRead, false)->getValue();
+        if( $sheet->getCell($cellToRead, false) ) {
+            $props['date_sortie_hetic'] = $sheet->getCell($cellToRead, false)->getValue();
+        }
+        else{
+            $props['date_sortie_hetic'] = Entite::WORD_NC;
+        }
 
         $cellToRead = (string) $sheetMapping->props->ville . $line;
-        $props['ville'] = $currentSheet->getCell($cellToRead, false)->getValue();
+        if( $sheet->getCell($cellToRead, false) ) {
+            $props['ville'] = $sheet->getCell($cellToRead, false)->getValue();
+        }
+        else{
+            $props['ville'] = Entite::WORD_NC;
+        }
 
         $cellToRead = (string) $sheetMapping->props->code_postal_residence . $line;
-        $props['code_postal_residence'] = $currentSheet->getCell($cellToRead, false)->getValue();
+        if( $sheet->getCell($cellToRead, false) ) {
+            $props['code_postal_residence'] = $sheet->getCell($cellToRead, false)->getValue();
+        }
+        else{
+            $props['code_postal_residence'] = Entite::WORD_NC;
+        }
 
         $cellToRead = (string) $sheetMapping->props->pays . $line;
-        $props['pays'] = $currentSheet->getCell($cellToRead, false)->getValue();
+        if( $sheet->getCell($cellToRead, false) ) {
+            $props['pays'] = $sheet->getCell($cellToRead, false)->getValue();
+        }
+        else{
+            $props['pays'] = Entite::WORD_NC;
+        }
 
         $cellToRead = (string) $sheetMapping->props->etudes_avant_hetic . $line;
-        $props['etudes_avant_hetic'] = $currentSheet->getCell($cellToRead, false)->getValue();
+        if( $sheet->getCell($cellToRead, false) ) {
+            $props['etudes_avant_hetic'] = $sheet->getCell($cellToRead, false)->getValue();
+        }
+        else{
+            $props['etudes_avant_hetic'] = Entite::WORD_NC;
+        }
 
         $cellToRead = (string) $sheetMapping->props->situation_pro_sortie_hetic . $line;
-        $props['situation_pro_sortie_hetic'] = $currentSheet->getCell($cellToRead, false)->getValue();
+        if( $sheet->getCell($cellToRead, false) ) {
+            $props['situation_pro_sortie_hetic'] = $sheet->getCell($cellToRead, false)->getValue();
+        }
+        else{
+            $props['situation_pro_sortie_hetic'] = Entite::WORD_NC;
+        }
 
         $cellToRead = (string) $sheetMapping->props->jobs_notables_exerces . $line;
-        $props['jobs_notables_exerces'] = $currentSheet->getCell($cellToRead, false)->getValue();
+        if( $sheet->getCell($cellToRead, false) ) {
+            $props['jobs_notables_exerces'] = $sheet->getCell($cellToRead, false)->getValue();
+        }
+        else{
+            $props['jobs_notables_exerces'] = Entite::WORD_NC;
+        }
 
         return EntityFactory::get('eleve', $props);
     }
     private function extractFonction($sheetMapping, $sheet, $line, $periode) {
         if( $periode === '6mois') {
             $cellToRead = (string) $sheetMapping->props_periode_6_mois->fonction . $line;
-            $props['nom'] = $currentSheet->getCell($cellToRead, false)->getValue();
+            if( $sheet->getCell($cellToRead, false) ) {
+                $props['nom'] = $sheet->getCell($cellToRead, false)->getValue();
+            }
+            else{
+                $props['nom'] = Entite::WORD_NC;
+            }
         }
         if( $periode === 'actuelle') {
             $cellToRead = (string) $sheetMapping->props_periode_actuelle->fonction . $line;
-            $props['nom'] = $currentSheet->getCell($cellToRead, false)->getValue();
+            if( $sheet->getCell($cellToRead, false) ) {
+                $props['nom'] = $sheet->getCell($cellToRead, false)->getValue();
+            }
+            else{
+                $props['nom'] = Entite::WORD_NC;
+            }
         }
 
         return EntityFactory::get('fonction', $props);
@@ -79,11 +129,21 @@ class ExcellDataFetcher implements InsertionInterface
     private function extractGroupe_socio_pro($sheetMapping, $sheet, $line, $periode) {
         if( $periode === '6mois') {
             $cellToRead = (string) $sheetMapping->props_periode_6_mois->groupe_socio_pro . $line;
-            $props['nom'] = $currentSheet->getCell($cellToRead, false)->getValue();
+            if( $sheet->getCell($cellToRead, false) ) {
+                $props['nom'] = $sheet->getCell($cellToRead, false)->getValue();
+            }
+            else {
+                $props['nom'] = Entite::WORD_NC;
+            }
         }
         if( $periode === 'actuelle') {
             $cellToRead = (string) $sheetMapping->props_periode_actuelle->groupe_socio_pro . $line;
-            $props['nom'] = $currentSheet->getCell($cellToRead, false)->getValue();
+            if( $sheet->getCell($cellToRead, false) ) {
+                $props['nom'] = $sheet->getCell($cellToRead, false)->getValue();
+            }
+            else {
+                $props['nom'] = Entite::WORD_NC;
+            }
         }
 
         return EntityFactory::get('groupe_socio_pro', $props);
@@ -91,29 +151,72 @@ class ExcellDataFetcher implements InsertionInterface
     private function extractSecteur($sheetMapping, $sheet, $line, $periode) {
         if( $periode === '6mois') {
             $cellToRead = (string) $sheetMapping->props_periode_6_mois->secteur . $line;
-            $props['nom'] = $currentSheet->getCell($cellToRead, false)->getValue();
+            if( $sheet->getCell($cellToRead, false) ) {
+                $props['nom'] = $sheet->getCell($cellToRead, false)->getValue();
+            }
+            else {
+                $props['nom'] = Entite::WORD_NC;
+            }
         }
         if( $periode === 'actuelle') {
             $cellToRead = (string) $sheetMapping->props_periode_actuelle->secteur . $line;
-            $props['nom'] = $currentSheet->getCell($cellToRead, false)->getValue();
+            if( $sheet->getCell($cellToRead, false) ) {
+                $props['nom'] = $sheet->getCell($cellToRead, false)->getValue();
+            }
+            else {
+                $props['nom'] = Entite::WORD_NC;
+            }
         }
 
         return EntityFactory::get('secteur', $props);
     }
+    private function extractContrat($sheetMapping, $sheet, $line, $periode) {
+        if( $periode === '6mois') {
+            $cellToRead = (string) $sheetMapping->props_periode_6_mois->contrat . $line;
+            if( $sheet->getCell($cellToRead, false) ) {
+                $props['nom'] = $sheet->getCell($cellToRead, false)->getValue();
+            }
+            else {
+                $props['nom'] = Entite::WORD_NC;
+            }
+        }
+        if( $periode === 'actuelle') {
+            $cellToRead = (string) $sheetMapping->props_periode_actuelle->contrat . $line;
+            if( $sheet->getCell($cellToRead, false) ) {
+                $props['nom'] = $sheet->getCell($cellToRead, false)->getValue();
+            }
+            else {
+                $props['nom'] = Entite::WORD_NC;
+            }
+        }
+
+        return EntityFactory::get('contrat', $props);
+    }
     private function extractFourchette($sheetMapping, $sheet, $line, $periode) {
         if( $periode === '6mois') {
             $cellToRead = (string) $sheetMapping->props_periode_6_mois->fourchette_salaire . $line;
-            $props['fourchette'] = $currentSheet->getCell($cellToRead, false)->getValue();
+            if( $sheet->getCell($cellToRead, false) ) {
+                $props['fourchette'] = $sheet->getCell($cellToRead, false)->getValue();
+            }
+            else{
+                $props['fourchette'] = Entite::WORD_NC;
+            }
+            
         }
         if( $periode === 'actuelle') {
             $cellToRead = (string) $sheetMapping->props_periode_actuelle->fourchette_salaire . $line;
-            $props['fourchette'] = $currentSheet->getCell($cellToRead, false)->getValue();
+            if( $sheet->getCell($cellToRead, false) ) {
+                $props['fourchette'] = $sheet->getCell($cellToRead, false)->getValue();
+            }
+            else{
+                $props['fourchette'] = Entite::WORD_NC;
+            }
         }
 
         return EntityFactory::get('fourchette', $props);
     }
 
-    public function InsertDatas() {
+    public function insertDatas() {
         //get entites DAO
         $contratDAO = DAOFactory::get('contrat');
         $eleveDAO = DAOFactory::get('eleve');
@@ -124,7 +227,6 @@ class ExcellDataFetcher implements InsertionInterface
         $secteurDAO = DAOFactory::get('secteur');
         $periodeDAO = DAOFactory::get('periode');
         $assoc_data_periodeDAO = DAOFactory::get('assoc_data_periode');
-        $assoc_periode_eleveDAO = DAOFactory::get('assoc_periode_eleve');
 
         //parcours du fichier de mapping des sheets 
         //le but est de recuperer la colonne associé à chaque type de donnée
@@ -132,7 +234,7 @@ class ExcellDataFetcher implements InsertionInterface
         {
             //init pour les parcours
             //recuperation de la sheet a extraire avec le ExcellReader
-            $currentSheet = $this->spreadsheet->getSheetByName($sheetMapping->title);
+            $currentSheet = $this->spreadSheets->getSheetByName($sheetMapping->title);
             //determine (grace aux infos de mapping) le nombre de ligne a parcourir sur la sheet
             $maxLine = $sheetMapping->beginLine + $sheetMapping->nbLines;
 
@@ -154,8 +256,10 @@ class ExcellDataFetcher implements InsertionInterface
                 $groupeActuelleObj =       $this->extractGroupe_socio_pro($sheetMapping, $currentSheet, $line, 'actuelle');
                 $contratActuelleObj =      $this->extractContrat($sheetMapping, $currentSheet, $line, 'actuelle');
                 $secteurActuelleObj =      $this->extractSecteur($sheetMapping, $currentSheet, $line, 'actuelle');
-                $foucehetteActuelleObj =   $this->extractFourchette($sheetMapping, $currentSheet, $line, 'actuelle');
+                $fourchetteActuelleObj =   $this->extractFourchette($sheetMapping, $currentSheet, $line, 'actuelle');
                 //insert
+                //l'élève
+                $eleveDAO->save($eleveObj);
                 //pour la periode 6 mois
                 $fonctionDAO->save($fonction6moisObj); 
                 $contratDAO->save($contrat6moisObj); 
@@ -163,57 +267,51 @@ class ExcellDataFetcher implements InsertionInterface
                 $groupe_socio_proDAO->save($groupe6moisObj); 
                 $fourchetteDAO->save($foucehette6moisObj); 
                 //pour la periode actuelle
-                $fonctionDAO->save($fonction6moisObj);
+                $fonctionDAO->save($fonctionActuelleObj);
                 $contratDAO->save($contratActuelleObj);
                 $secteurDAO->save($secteurActuelleObj);
                 $groupe_socio_proDAO->save($groupeActuelleObj); 
-                $fourchetteDAO->save($foucehetteActuelleObj);
+                $fourchetteDAO->save($fourchetteActuelleObj);
 
                 //create assocs si cela est nescessaire car des données peuvent etre vides
-                $assocPeriodeEleveObj;
-                $assocDataPerideObj;
+                $assocDataPeriodeObj;
                 //si l'Eleve a renseigné des données pour la periode 6 mois
-                $isEleveRenseignePeriode6mois = (bool) $fonction6moisObj->isEmpty() || $groupe6moisObj->isEmpty() || $contrat6moisObj->isEmpty()|| $secteur6moisObj->isEmpty() || $foucehette6moisObj->isEmpty();
+                $isEleveRenseignePeriode6mois = (bool) !$fonction6moisObj->isEmpty() || !$groupe6moisObj->isEmpty() || !$contrat6moisObj->isEmpty()|| !$secteur6moisObj->isEmpty() || !$foucehette6moisObj->isEmpty();
                 if( $isEleveRenseignePeriode6mois ) {
                     //build entity assoc object
-                    //assoc periode eleve
+                    //assoc data periode eleve
                     //pour la periode 6 mois
                     $idPeriode = $periodeDAO->get6moisId();
-                    $assocPeriodeEleveObj = EntityFactory::get('assoc_periode_eleve', array(
-                            'idPeriode' => $idPeriode,
-                            'idEleve' => $eleve->id()
-                        ));
-                    $assocDataPerideObj = EntityFactory::get('assoc_data_periode', array(
+                    $assocDataPeriodeObj = EntityFactory::get('assoc_data_periode', array(
+                            'idEleve' =>  $eleveObj->id(),
                             'idPeriode' =>  $idPeriode,
                             'idGroupe' => $groupe6moisObj->id(),
                             'idContrat' => $contrat6moisObj->id(),
                             'idFonction' => $fonction6moisObj->id(),
                             'idSecteur' => $secteur6moisObj->id(),
-                            'idFourchette' => $foucehette6moisObj>id()
+                            'idFourchette' => $foucehette6moisObj->id()
                         ));
+                    //insert assoc
+                    $assoc_data_periodeDAO->save($assocDataPeriodeObj);
                 }
-                $assoc_periode_eleveDAO->save($assocPeriodeEleve);
-                $assoc_data_periodeDAO->save($assocDataPeride);
-
                 //si l'Eleve a renseigné des données pour la periode actuelle
-                $isEleveRenseignePeriodeActuelle = (bool) $fonctionActuelleObj->isEmpty() || $groupeActuelleObj->isEmpty() || $contratActuelleObj->isEmpty()|| $secteurActuelleObj->isEmpty() || $foucehetteActuelleObj->isEmpty();
+                $isEleveRenseignePeriodeActuelle = (bool) !$fonctionActuelleObj->isEmpty() || !$groupeActuelleObj->isEmpty() || !$contratActuelleObj->isEmpty()|| !$secteurActuelleObj->isEmpty() || !$fourchetteActuelleObj->isEmpty();
                 if( $isEleveRenseignePeriodeActuelle ) {
                     //build entity assoc object
-                    //assoc periode eleve
+                    //assoc data periode eleve
                     //pour la periode 6 mois
-                    $idPeriode = $periodeDAO->get6moisId();
-                    $assocPeriodeEleveObj = EntityFactory::get('assoc_periode_eleve', array(
-                            'idPeriode' => $idPeriode,
-                            'idEleve' => $eleve->id()
-                        ));
-                    $assocDataPerideObj = EntityFactory::get('assoc_data_periode', array(
+                    $idPeriode = $periodeDAO->getActuelleId();
+                    $assocDataPeriodeObj = EntityFactory::get('assoc_data_periode', array(
+                            'idEleve' =>  $eleveObj->id(),
                             'idPeriode' =>  $idPeriode,
                             'idGroupe' => $groupeActuelleObj->id(),
                             'idContrat' => $contratActuelleObj->id(),
                             'idFonction' => $fonctionActuelleObj->id(),
                             'idSecteur' => $secteurActuelleObj->id(),
-                            'idFourchette' => $foucehetteActuelleObj>id()
+                            'idFourchette' => $fourchetteActuelleObj->id()
                         ));
+                    //insert assoc    
+                    $assoc_data_periodeDAO->save($assocDataPeriodeObj);
                 }
             }
         }

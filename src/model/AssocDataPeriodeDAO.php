@@ -2,8 +2,9 @@
 
 namespace src\model;
 
-use src\Entities\AssocDataPeriode;
 use src\model\DAO;
+use src\Dataviz\Entities\Entite;
+use src\Dataviz\Entities\AssocDataPeriode;
 
 class AssocDataPeriodeDAO extends DAO
 {
@@ -21,37 +22,41 @@ class AssocDataPeriodeDAO extends DAO
 
     }
 
-    public function save($assocDataPeriode) {
-        if( $eleve->id() === AssocDataPeriode::UNKNOWN_ID ) {
+    public function save(Entite &$assocDataPeriode) {
+        if( $assocDataPeriode->id() === self::UNKNOWN_ID ) {
             //INSERT
             $sql = "INSERT INTO " . self::TABLE_NAME . " (".
-                    "idPeriode,
+                    "idEleve,
+                     idPeriode,
                      idGroupe,
                      idContrat,
                      idFonction,
                      idSecteur,
                      idFourchette".
                     ") VALUES (".
-                    $eleve->idPeriode() . ',' .
-                    $eleve->idGroupe() . ',' .
-                    $eleve->idContrat() . ',' .
-                    $eleve->idFonction() . ',' .
-                    $eleve->idSecteur() . ',' .
-                    $eleve->idFourchette() . ')';
-            $this->db->exec($sql);
+                    ":idEleve,
+                     :idPeriode,
+                     :idGroupe,
+                     :idContrat,
+                     :idFonction,
+                     :idSecteur,
+                     :idFourchette )";
+            $sth = $this->db->prepare($sql);
+            $sth->execute( array(
+                    ':idEleve' => $assocDataPeriode->idELeve(),
+                    ':idPeriode' => $assocDataPeriode->idPeriode(),
+                    ':idGroupe' => $assocDataPeriode->idGroupe(),
+                    ':idContrat' => $assocDataPeriode->idContrat(),
+                    ':idFonction' => $assocDataPeriode->idFonction(),
+                    ':idSecteur' => $assocDataPeriode->idSecteur(),
+                    ':idFourchette' => $assocDataPeriode->idFourchette()) );
             //set l'id de l'élève inseré
-            $eleve->setId($this->lastInsertId());
+            $assocDataPeriode->setId($this->db->lastInsertId());
         }
         else {
             //UPDATE
         }
     }
 
-    public function delete() {
-
-    }
-
-    public function lastInsertId() {
-
-    }
+    public function delete(Entite $obj) { }
 }

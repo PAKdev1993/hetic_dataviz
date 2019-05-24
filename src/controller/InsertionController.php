@@ -2,22 +2,28 @@
 
 namespace src\Controller;
 
+use \PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+use src\Dataviz\DataInsertion\ExcellDataFetcher;
+use src\model\DAOFactory;
+
 class InsertionController 
 {
-    const PATH_DATA = './data/bd.xlsx';
-
-    private $excellReader;
-    private $inputFileName;
-
     /**
      * INSERTION DES DONNEES
      */
-    public function index(InsertionInterface $insertor) {
-        $response = $insertor->insertData();
+    public function index() {
+        $isDataAlreadyInserted = (bool) DAOFactory::get('eleve')->getOne(1);
+        if( !$isDataAlreadyInserted ) {
+            $insertor = new ExcellDataFetcher( new Xlsx() );
+            $isInsertionOk = $insertor->insertDatas();
 
-        if( !$response ) {
-            throw new Exception("L'insertion a échoué"); 
+            if( !$isInsertionOk ) {
+                throw new Exception("L'insertion a échoué"); 
+            }
+            echo("l'insertion s'est bien deroulée");
         }
-        return $response;
+        else{
+            echo("Données deja inserées");
+        }
     }
 }

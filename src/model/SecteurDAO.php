@@ -2,6 +2,8 @@
 
 namespace src\model;
 
+use src\model\DAO;
+use src\Dataviz\Entities\Entite;
 use src\Dataviz\Entities\Secteur;
 
 class SecteurDAO extends DAO
@@ -20,26 +22,26 @@ class SecteurDAO extends DAO
 
     }
 
-    public function save(Secteur $secteur) {
-        if( $secteur->id() === Secteur::UNKNOWN_ID ) {
-            //INSERT
-            $sql = "INSERT INTO ". self::TABLE_NAME." (". 
-                    "nom".
-                    ") VALUES (".
-                    $secteur->nom() . ')';
-            $this->db->exec($sql);
-            $secteur->setId($this->lastInsertId());
+    public function save(Entite &$secteur) {
+        if( $secteur->id() === self::UNKNOWN_ID ) {
+            if(!$secteur->isEmpty()) {
+                //INSERT
+                $sql = "INSERT INTO ". self::TABLE_NAME." (". 
+                        "nom".
+                        ") VALUES (".
+                        ':nom )';
+                $sth = $this->db->prepare($sql);
+                $sth->execute( array(':nom' => $secteur->nom()) );
+                $secteur->setId($this->db->lastInsertId());
+            }
+            else{
+                $secteur->setId(Entite::WORD_NC); 
+            }
         }
         else {
             //UPDATE
         }
     }
 
-    public function delete() {
-
-    }
-
-    public function lastInsertId() {
-        $this->db->lastInsertId();
-    }        
+    public function delete(Entite $obj){}       
 }

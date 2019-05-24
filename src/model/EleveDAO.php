@@ -2,7 +2,7 @@
 
 namespace src\model;
 
-use src\Dataviz\Entities\Eleve;
+use src\Dataviz\Entities\Entite;
 
 class EleveDAO extends DAO 
 {
@@ -14,15 +14,17 @@ class EleveDAO extends DAO
     }
 
     public function getOne($id) {
-        
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE idEleve = $id";
+        $sth = $this->db->query($sql);
+        return $sth->fetch();
     }
 
     public function getAll() {
 
     }
 
-    public function save(Eleve $eleve) {
-        if( $eleve->id() === Eleve::UNKNOWN_ID ) {
+    public function save(Entite &$eleve) {
+        if( $eleve->id() === self::UNKNOWN_ID ) {
             //insert
             $sql = "INSERT INTO " . self::TABLE_NAME . " (".
                     "promo,
@@ -36,30 +38,35 @@ class EleveDAO extends DAO
                      situation_pro_sortie_hetic,
                      jobs_notables_exerces".
                     ") VALUES (".
-                    $eleve->promo() . ',' .
-                    $eleve->civilite() . ',' .
-                    $eleve->date_sortie_hetic() . ',' .
-                    $eleve->ville() . ',' .
-                    $eleve->code_postal_residence() . ',' .
-                    $eleve->pays() . ',' .
-                    $eleve->annee_promo() . ',' .
-                    $eleve->etudes_avant_hetic() . ',' .
-                    $eleve->situation_pro_sortie_hetic() . ',' .
-                    $eleve->jobs_notables_exerces() . ')';
-            $this->db->exec($sql);
+                    ":promo,
+                     :civilite,
+                     :date_sortie_hetic,
+                     :ville,
+                     :code_postal_residence,
+                     :pays,
+                     :annee_pro,
+                     :etudes_avant_hetic,
+                     :situation_pro_sortie_hetic,
+                     :jobs_notables_exerces )";
+            $sth = $this->db->prepare($sql);
+            $sth->execute( array( 
+                    ':promo' =>$eleve->promo(),
+                    ':civilite' => $eleve->civilite(),
+                    ':date_sortie_hetic' => $eleve->date_sortie_hetic(),
+                    ':ville' => $eleve->ville(),
+                    ':code_postal_residence' => $eleve->code_postal_residence(),
+                    ':pays' => $eleve->pays(),
+                    ':annee_pro' => $eleve->annee_promo(),
+                    ':etudes_avant_hetic' => $eleve->etudes_avant_hetic(),
+                    ':situation_pro_sortie_hetic' => $eleve->situation_pro_sortie_hetic(),
+                    ':jobs_notables_exerces' => $eleve->jobs_notables_exerces() ));
             //set l'id de l'élève inseré
-            $eleve->setId($this->lastInsertId());
+            $eleve->setId($this->db->lastInsertId());
         }
         else {
             //UPDATE
         }
     }
 
-    public function delete() {
-
-    }
-
-    public function lastInsertId() {
-        $this->db->lastInsertId();
-    }
+    public function delete(Entite $obj) { }
 }

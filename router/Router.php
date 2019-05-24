@@ -1,14 +1,16 @@
 <?php
 
-namespace Route;
+namespace Router;
 
 use src\Controller\ControllerFactory;
+use Symfony\Component\Yaml\Yaml;
 
 class Router
 {
-    const PATH_ROUTES_YAML = "./config/routes.yaml";
+    /* PATH TO ROUTE CONFIG FILE*/
+    const PATH_ROUTES_YAML = "./../config/routes.yaml";
+    /* ROUTING ERRORS */
     const ROUTE_NOT_FOUND = 1;
-
     const HEAD_404 = "HTTP/1.0 404 Not Found";
 
     public function redirectToRoute($route) {
@@ -16,21 +18,18 @@ class Router
     }
 
     public function RouteTo($route) {
-        if(count($route) > 1){
-            header(self::HEAD_404);
-            exit();
-        }
         //load controller
-        $result = $this->matchRoute($route);
+        $controller = $this->matchRoute($route);
 
-        if($result === self::ROUTE_NOT_FOUND) {
+        if($controller === self::ROUTE_NOT_FOUND) {
             header(self::HEAD_404);
             exit();
         }
         else {
-            $controllerObj = ControllerFactory::get($result->controllerName);
-            if(method_exists($controllerObj, $result->methodName)) {
-                return call_user_func_array(array($controllerObj, $result->methodName));
+            $controllerObj = ControllerFactory::get($controller->controllerName);
+            if(method_exists($controllerObj, $controller->methodName)) {
+                $methodName = $controller->methodName;
+                return call_user_func_array( array($controllerObj, $controller->methodName), array() );
             }
             else{
                 header(self::HEAD_404);
@@ -39,11 +38,11 @@ class Router
         }
     }
 
-    private function matchRoute($routeName) : string {
+    private function matchRoute($routeName) {
         $found = false;
-        $data = yaml_parse($yaml, 0);
+        $data = Yaml::parseFile(self::PATH_ROUTES_YAML);
         foreach($data as $route) {
-            if($route === $routeName) {
+            if($route['path'] === $routeName) {
                 $controller = new \stdClass();
                 $controller->controllerName = $route['controller'];
                 $controller->methodName = $route['methode'];

@@ -1,7 +1,10 @@
-/
+index:
+  path: /
   controller: index
   methode: index
-insertion
+
+insertion:
+  path: insertion
   controller: insertion
   methode: index
 

@@ -7,7 +7,7 @@ class Fonction extends Entite
     private $id;
     private $nom;
 
-    public function __construct( array $pros ) {
+    public function __construct( array $props ) {
         $this->id =   isset( $props['id'] ) ? $props['id'] : self::UNKNOW_ID;
         $this->nom = $props['nom'];
 
@@ -38,7 +38,7 @@ class Fonction extends Entite
         $this->nom = utf8_encode(trim(ucfirst(strtolower($this->nom))));
     }
 
-    protected function isEmpty() {
-        return (bool) $this->nom;
+    public function isEmpty() {
+        return (bool) !$this->nom;
     }
 }

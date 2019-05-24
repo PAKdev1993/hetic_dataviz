@@ -22,8 +22,8 @@ class EntityFactory
                 return new Secteur( $props );
             case 'assoc_data_periode' :
                 return new AssocDataPeriode( $props );
-            case 'assoc_periode_eleve' :
-                return new AssocPeriodeEleve( $props );
+            default:
+                throw new \Exception("la classe $className n'existe pas");
         }
     }
 }

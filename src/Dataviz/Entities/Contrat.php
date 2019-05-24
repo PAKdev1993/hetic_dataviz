@@ -7,9 +7,9 @@ class Contrat extends Entite
     private $id;
     private $nom;
 
-    public function __construct( array $pros ) {
+    public function __construct( array $props ) {
         $this->id =   isset( $props['id'] ) ? $props['id'] : self::UNKNOW_ID;
-        $this->nom = $props['name'];
+        $this->nom = $props['nom'];
 
         $this->clean();
     }
@@ -30,7 +30,7 @@ class Contrat extends Entite
         $this->id = $id;
     }
 
-    private function clean() {
+    protected function clean() {
         if($this->nom == '') {
             $this->nom = self::WORD_NC;
             return;
@@ -54,7 +54,7 @@ class Contrat extends Entite
         $this->nom = self::WORD_NC;
     }
 
-    protected function isEmpty() {
-        return (bool) $this->nom;
+    public function isEmpty() {
+        return (bool) !$this->nom;
     }
 }

@@ -25,26 +25,17 @@ INSERT INTO `periode` (`idPeriode`, `nom`) VALUES
 (1, '6 mois après'),
 (2, 'Actuelle');
 
-
-DROP TABLE IF EXISTS `assoc_periode_eleve`;
-CREATE TABLE IF NOT EXISTS `assoc_periode_eleve` (
-  `idPeriode` int,
-  `idEleve` int,
-  PRIMARY KEY (`idPeriode`, `idEleve`),
-  FOREIGN KEY (`idPeriode`) REFERENCES periode(`idPeriode`),
-  FOREIGN KEY (`idEleve`) REFERENCES eleve(`idEleve`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
-
 DROP TABLE IF EXISTS `assoc_data_periode`;
 CREATE TABLE IF NOT EXISTS `assoc_data_periode` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `idEleve` int,
   `idPeriode` int,
   `idGroupe` int DEFAULT NULL,
   `idFonction` int DEFAULT NULL,
   `idContrat` int DEFAULT NULL,
   `idSecteur` int DEFAULT NULL,
   `idFourchette` int DEFAULT NULL,
-  PRIMARY KEY (`id`, `idPeriode`),
+  PRIMARY KEY (`idEleve`,`idPeriode`),
+  FOREIGN KEY (`idEleve`) REFERENCES periode(`idEleve`),
   FOREIGN KEY (`idPeriode`) REFERENCES periode(`idPeriode`),
   FOREIGN KEY (`idFonction`) REFERENCES fonction(`idFonction`),
   FOREIGN KEY (`idGroupe`) REFERENCES groupe_socio_pro(`idGroupe`),

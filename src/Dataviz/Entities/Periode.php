@@ -27,4 +27,10 @@ class Periode extends Entite
     public function setId($id) {
         $this->id = $id;
     }
+
+    public function clean() {}
+
+    public function isEmpty() {
+        return (bool) !$this->nom;
+    }
 }

@@ -7,11 +7,11 @@ class GroupeSocioPro extends Entite
     private $id;
     private $nom;
 
-    public function __construct( array $pros ) {
+    public function __construct( array $props ) {
         $this->id =   isset( $props['id'] ) ? $props['id'] : self::UNKNOW_ID;
         $this->nom = $props['nom'];
 
-        $this->clear();
+        $this->clean();
     }
 
     /**
@@ -30,29 +30,29 @@ class GroupeSocioPro extends Entite
         $this->id = $id;
     }
 
-    protected function clear() {
-        if(strpos( $this->name, "Emp" ) !== false){
-            $this->name = self::WORD_GR_EMPLOYE; 
+    protected function clean() {
+        if(strpos( $this->nom, "Emp" ) !== false){
+            $this->nom = self::WORD_GR_EMPLOYE; 
             return;
         }
-        if(strpos( $this->name, "Ind" ) !== false){
-            $this->name = self::WORD_GR_INDEPENDANT;
+        if(strpos( $this->nom, "Ind" ) !== false){
+            $this->nom = self::WORD_GR_INDEPENDANT;
             return; 
         }
-        if(strpos( $this->name, "Ca" ) !== false){
-            $this->name = self::WORD_GR_CADRE;
+        if(strpos( $this->nom, "Ca" ) !== false){
+            $this->nom = self::WORD_GR_CADRE;
             return; 
         }
-        if(strpos( $this->name, "Dir" ) !== false){
-            $this->name = self::WORD_GR_PATRON;
+        if(strpos( $this->nom, "Dir" ) !== false){
+            $this->nom = self::WORD_GR_PATRON;
             return; 
         }
         //#TODO ici il n'y a pas le cas "Poursuite d'étude" car inutile ds ce champ
-        $this->name = self::WORD_NC;
+        $this->nom = self::WORD_NC;
         return; 
     }
 
-    protected function isEmpty() {
-        return (bool) $this->nom;
+    public function isEmpty() {
+        return (bool) !$this->nom;
     }
 }

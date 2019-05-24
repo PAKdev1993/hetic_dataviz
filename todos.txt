@@ -1,0 +1,3 @@
+-ds les classes DAO : essayer de faire ne sorte que l'on puisse passer la classe entite associé a la DAO de l'objet plutot que l'abstract class Entite
+-ameliorer le ExcellDataFetcher notement les extract DATA function
+ rendre plus générique

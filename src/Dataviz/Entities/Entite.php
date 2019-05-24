@@ -13,27 +13,31 @@ abstract class Entite {
     const WORD_PROMO_WEB = "Web";
     const WORD_PROMO_WEB_MARKETING = "Web Marketing";
 
-    /* CONTRAT */
+    /* ENTITE CONTRAT */
     const WORD_CONTRAT_CONTRAT_PRO = 'CDD contrat pro';
     const WORD_CONTRAT_CDD = 'CDD';
     const WORD_CONTRAT_CDI = 'CDI';
     const WORD_CONTRAT_AUTRE = 'Autre';
 
-    /* GROUPE SOCIO PRO */
+    /* ENTITE GROUPE SOCIO PRO */
     const WORD_GR_EMPLOYE = "Employé";
     const WORD_GR_INDEPENDANT = "Indépendant";
     const WORD_GR_CADRE = "Cadre";
     const WORD_GR_PATRON = "Directeur/Associé";
 
-    /* PERIODE */
+    /* ENTITE PERIODE */
     const PERIODE_6MOIS_NAME = '6 mois après';
     const PERIODE_ACTUELLE_NAME = 'Actuelle';
+
+    /* ENTITE FONCTION */
+    const WORD_FONCTION_POURSUITE_ETUDE = "Poursuite d''étude";
+    const WORD_FONCTION_RECH_EMPLOI = "Recherche d''emploi";
 
     const WORD_NC = null;
 
     abstract protected function id();
 
-    abstract protected function setId();
+    abstract protected function setId(int $id);
     
     abstract protected function clean();
 

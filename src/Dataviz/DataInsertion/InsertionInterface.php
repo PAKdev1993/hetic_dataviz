@@ -4,6 +4,6 @@ namespace src\Dataviz\DataInsertion;
 
 Interface InsertionInterface {
     
-    public function InsertDatas();
+    public function insertDatas();
 
 }

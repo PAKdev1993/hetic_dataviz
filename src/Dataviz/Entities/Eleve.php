@@ -2,6 +2,8 @@
 
 namespace src\Dataviz\Entities;
 
+use \PhpOffice\PhpSpreadsheet\Shared\Date;
+
 class Eleve extends Entite
 {
     private $id;
@@ -35,11 +37,23 @@ class Eleve extends Entite
     /**
      * GETTERS
      */
+    public function id() {
+        return $this->id;
+    }
     public function promo() {
         return $this->promo;
     }
     public function civilite() {
         return $this->civilite;
+    }
+    public function date_sortie_hetic() {
+        return $this->date_sortie_hetic;
+    }
+    public function ville() {
+        return $this->ville;
+    }
+    public function code_postal_residence() {
+        return $this->code_postal_residence;
     }
     public function pays() {
         return $this->pays;
@@ -162,4 +176,6 @@ class Eleve extends Entite
 
         return $job;
     }
+
+    protected function isEmpty() { return false; }
 }

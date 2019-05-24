@@ -11,6 +11,7 @@ use src\model\SecteurDAO;
 use src\model\PeriodeDAO;
 use src\model\AssocDataPeriodeDAO;
 use src\model\AssocPeriodeEleveDAO;
+use src\model\db\PDOconnector as DB;
 
 class DAOFactory 
 {
@@ -21,23 +22,23 @@ class DAOFactory
     public static function get($className) {
         switch($className) {
             case 'contrat' :
-                return new ContratDAO( PDO::getInstance() );
+                return new ContratDAO( DB::getInstance() );
             case 'eleve' :
-                return new EleveDAO( PDO::getInstance() );
+                return new EleveDAO( DB::getInstance() );
             case 'fonction' :
-                return new FonctionDAO( PDO::getInstance() );
+                return new FonctionDAO( DB::getInstance() );
             case 'fourchette' :
-                return new FourchetteDAO( PDO::getInstance() ); 
+                return new FourchetteDAO( DB::getInstance() ); 
             case 'groupe_socio_pro' :
-                return new GroupeSocioProDAO( PDO::getInstance() );
+                return new GroupeSocioProDAO( DB::getInstance() );
             case 'secteur' :
-                return new SecteurDAO( PDO::getInstance() );
+                return new SecteurDAO( DB::getInstance() );
             case 'periode' :
-                return new PeriodeDAO( PDO::getInstance() );
+                return new PeriodeDAO( DB::getInstance() );
             case 'assoc_data_periode' :
-                return new AssocDataPeriodeDAO( PDO::getInstance() );
-            case 'assoc_periode_eleve' :
-                return new AssocPeriodeEleveDAO( PDO::getInstance() );
+                return new AssocDataPeriodeDAO( DB::getInstance() );
+            default:
+                throw new \Exception("La classe $className n'existe pas");
         }
     }
 }

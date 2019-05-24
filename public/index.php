@@ -1,6 +1,13 @@
 <?php
+require_once __DIR__.'/../vendor/autoload.php';
+
+use Router\Router;
+
 $router = new Router();
 
-$routeInfos = explode('/', $_SERVER['REQUEST_URI']);
-
-$router->RouteTo($routeInfos[0]);
+if(isset($_GET['to'])) {
+    $router->RouteTo($_GET['to']);
+}
+else{
+    $router->RouteTo('/');
+}

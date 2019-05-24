@@ -19,12 +19,12 @@ class ConfigDB
 }
 
 // db
-Config::write('db.host', 'localhost');      //mettre valeur perso ici
-Config::write('db.basename', 'pak_dataviz');   //mettre valeur perso ici
-Config::write('db.user', 'dataviz');           //mettre valeur perso ici
-Config::write('db.pwd', 'dataviz');                //mettre valeur perso ici
-Config::write('options', [
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+ConfigDB::write('db.host', 'localhost');      //mettre valeur perso ici
+ConfigDB::write('db.basename', 'pak_dataviz');   //mettre valeur perso ici
+ConfigDB::write('db.user', 'dataviz');           //mettre valeur perso ici
+ConfigDB::write('db.pwd', 'dataviz');                //mettre valeur perso ici
+ConfigDB::write('options', [
+    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
     //PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
 ]);

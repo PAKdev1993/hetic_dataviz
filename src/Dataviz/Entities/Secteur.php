@@ -7,7 +7,7 @@ class Secteur extends Entite
     private $id;
     private $nom;
 
-    public function __construct( array $pros ) {
+    public function __construct( array $props ) {
         $this->id =   isset( $props['id'] ) ? $props['id'] : self::UNKNOW_ID;
         $this->nom = $props['nom'];
 
@@ -30,11 +30,11 @@ class Secteur extends Entite
         $this->id = $id;
     }
 
-    private function clean() {
-        $this->nom = $this->nom == '' ? self::WORD_NC : utf8_encode(trim(ucfirst(strtolower($value))));
+    protected function clean() {
+        $this->nom = $this->nom == '' ? self::WORD_NC : utf8_encode(trim(ucfirst(strtolower($this->nom))));
     }
 
-    protected function isEmpty() {
-        return (bool) $this->nom;
+    public function isEmpty() {
+        return (bool) !$this->nom;
     }
 }

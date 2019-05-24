@@ -2,8 +2,9 @@
 
 namespace src\model;
 
-use src\Entities\Contrat;
 use src\model\DAO;
+use src\Dataviz\Entities\Entite;
+use src\Dataviz\Entities\Contrat;
 
 class ContratDAO extends DAO 
 {
@@ -14,6 +15,10 @@ class ContratDAO extends DAO
     public function __construct( $db ) {
         parent::__construct($db);
     }
+
+    public function getOne($id) {}
+
+    public function getAll() {}
 
     public function getCddId() {
         $sql = "SELECT ". self::ID_NAME .
@@ -47,10 +52,10 @@ class ContratDAO extends DAO
         return (int) $sth->fetch()->idContrat;                
     }
 
-    public function save($contrat){
+    public function save(Entite &$contrat){
         //ici vu que les differents type de contrat sont des valeurs enums, 
         //on rempli juste l'id du contrat correspondant a celui de l'objet
-        switch($contrat->nom) {
+        switch($contrat->nom()) {
             case Contrat::WORD_CONTRAT_CDD :
                 $contrat->setId($this->getCddId());
                 break;
@@ -63,6 +68,13 @@ class ContratDAO extends DAO
             case Contrat::WORD_CONTRAT_AUTRE :
                 $contrat->setId($this->getContratAutreId());
                 break;
+            case Contrat::WORD_NC :
+                $contrat->setId(null);
+                break;
+            default:
+                throw new \Exception('L\'entite "Contrat" porte une valeur "nom" invalide');
         }
     }
+
+    public function delete(Entite $obj) {}
 }
