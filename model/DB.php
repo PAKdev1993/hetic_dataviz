@@ -3,7 +3,7 @@ require_once "Config.php";
 
 class DB{
 
-    private static $instance;
+    static private $instance = null;
 
     //Singleton pattern
     public static function getInstance(){

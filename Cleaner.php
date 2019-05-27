@@ -4,7 +4,7 @@ require_once "./data/ConfigData.php";
 
 use \PhpOffice\PhpSpreadsheet\Shared\Date;
 
-class Cleaner implements iClean {
+class Cleaner implements CleanerInterface {
 
     public function __construct()
     {

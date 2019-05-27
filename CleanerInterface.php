@@ -1,5 +1,5 @@
 <?php
-interface iClean {
+interface CleanerInterface {
 
     public function cleanProps(Eleve &$eleveObj);
     
