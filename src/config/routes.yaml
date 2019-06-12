@@ -1,0 +1,87 @@
+index:
+  path: /
+  controller: index
+  methode: index
+
+#TRIGGER INSERTION DES DONNEE EN BASE
+insertion:
+  path: insertion
+  controller: insertion
+  methode: index
+
+#DATAVIZS
+dataviz1.1:
+  path: '1.1'
+  controller: dataviz
+  methode: dataviz11
+
+dataviz1.2:
+  path: '1.2'
+  controller: dataviz
+  methode: dataviz12
+
+dataviz1.3:
+  path: '1.3'
+  controller: dataviz
+  methode: dataviz13
+
+dataviz2.1:
+  path: '2.1'
+  controller: dataviz
+  methode: dataviz21
+
+dataviz3.1:
+  path: '3.1'
+  controller: dataviz
+  methode: dataviz31
+
+dataviz3.1.1:
+  path: '3.1.1'
+  controller: dataviz
+  methode: dataviz311
+
+dataviz3.1.2:
+  path: '3.1.2'
+  controller: dataviz
+  methode: dataviz312
+
+dataviz3.1.3:
+  path: '3.1.3'
+  controller: dataviz
+  methode: dataviz313
+
+dataviz3.2:
+  path: '3.2'
+  controller: dataviz
+  methode: dataviz32
+
+dataviz3.3:
+  path: '3.3'
+  controller: dataviz
+  methode: dataviz33
+
+dataviz3.4:
+  path: '3.4'
+  controller: dataviz
+  methode: dataviz34
+
+dataviz4.1:
+  path: '4.1'
+  controller: dataviz
+  methode: dataviz41
+
+dataviz4.2:
+  path: '4.2'
+  controller: dataviz
+  methode: dataviz42
+
+dataviz4.3:
+  path: '4.3'
+  controller: dataviz
+  methode: dataviz43
+
+dataviz4.4:
+  path: '4.4'
+  controller: dataviz
+  methode: dataviz44
+

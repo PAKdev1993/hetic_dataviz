@@ -77,6 +77,7 @@ class ComposerStaticInit3a6f824677340fb3db1635329dde73bc
             'Symfony\\Polyfill\\Php70\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\Routing\\' => 26,
             'Symfony\\Component\\OptionsResolver\\' => 34,
             'Symfony\\Component\\HttpKernel\\' => 29,
@@ -101,6 +102,10 @@ class ComposerStaticInit3a6f824677340fb3db1635329dde73bc
             'Csanquer\\Silex\\PdoServiceProvider\\' => 34,
             'Complex\\' => 8,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -115,6 +120,10 @@ class ComposerStaticInit3a6f824677340fb3db1635329dde73bc
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Symfony\\Component\\Yaml\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
         'Symfony\\Component\\Routing\\' => 
         array (
@@ -171,6 +180,10 @@ class ComposerStaticInit3a6f824677340fb3db1635329dde73bc
         'Complex\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 

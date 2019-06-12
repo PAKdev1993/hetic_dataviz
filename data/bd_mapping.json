@@ -5,7 +5,7 @@
 			"nbLines": 42,
 			"beginLine": 8,
 			"props": {
-				"promo": "WEB",
+				"cursus": "WEB",
 				"annee_promo": "2017",
 				"civilite": "B",
 				"date_sortie_hetic": "C",
@@ -36,7 +36,7 @@
 			"nbLines": 29,
 			"beginLine": 8,
 			"props": {
-				"promo": "Web Marketing",
+				"cursus": "Web Marketing",
 				"annee_promo": "2017",
 				"civilite": "B",
 				"date_sortie_hetic": "C",
@@ -67,7 +67,7 @@
 			"nbLines": 18,
 			"beginLine": 8,
 			"props": {
-				"promo": "Web Marketing",
+				"cursus": "Web Marketing",
 				"annee_promo": "2016",
 				"civilite": "B",
 				"date_sortie_hetic": "C",
@@ -98,7 +98,7 @@
 			"nbLines": 39,
 			"beginLine": 5,
 			"props": {
-				"promo": "Web",
+				"cursus": "Web",
 				"annee_promo": "2016",
 				"civilite": "B",
 				"date_sortie_hetic": null,
@@ -129,7 +129,7 @@
 			"nbLines": 15,
 			"beginLine": 8,
 			"props": {
-				"promo": "Web Marketing",
+				"cursus": "Web Marketing",
 				"annee_promo": "2015",
 				"civilite": "B",
 				"date_sortie_hetic": "C",
@@ -160,7 +160,7 @@
             "nbLines": 38,
             "beginLine": 8,
             "props": {
-                "promo": "Web",
+                "cursus": "Web",
                 "annee_promo": "2015",
                 "civilite": "B",
                 "date_sortie_hetic": "C",
