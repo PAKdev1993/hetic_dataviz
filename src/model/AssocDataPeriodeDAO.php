@@ -3,9 +3,9 @@
 namespace App\model;
 
 use App\model\DAO;
-use App\Dataviz\Entities\Entite;
+use App\dataviz\Entities\Entite;
 use App\dataviz\datavizs\FilterList;
-use App\Dataviz\Entities\AssocDataPeriode;
+use App\dataviz\Entities\AssocDataPeriode;
 
 class AssocDataPeriodeDAO extends DAO
 {

@@ -5,7 +5,7 @@ namespace App\model;
 use App\model\DAO;
 use App\dataviz\Entities\Entite;
 use App\dataviz\datavizs\FilterList;
-use App\Dataviz\Entities\Fonction;
+use App\dataviz\Entities\Fonction;
 
 class FonctionDAO extends DAO{
 
