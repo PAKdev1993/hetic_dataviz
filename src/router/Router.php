@@ -8,7 +8,7 @@ use Symfony\Component\Yaml\Yaml;
 class Router
 {
     /* PATH TO ROUTE CONFIG FILE*/
-    private const PATH_ROUTES_YAML = __DIR__ . "./../config/routes.yaml";
+    private const PATH_ROUTES_YAML = __DIR__ . "/../config/routes.yaml";
     /* ROUTING ERRORS */
     private const ROUTE_NOT_FOUND = 1;
 

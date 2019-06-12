@@ -32,7 +32,6 @@ class SecteurDAO extends DAO
                         ") VALUES (".
                         ':nom )';
                 $sth = $this->db->prepare($sql);
-                var_dump($secteur->nom());
                 $sth->execute( array(':nom' => $secteur->nom()) );
                 $secteur->setId($this->db->lastInsertId());
             }

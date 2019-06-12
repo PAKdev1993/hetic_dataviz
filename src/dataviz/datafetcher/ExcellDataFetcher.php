@@ -8,8 +8,8 @@ use App\model\DAOFactory;
 
 class ExcellDataFetcher implements InsertionInterface
 {
-    const PATH_DATA = __DIR__ . './../../../data/bd.xlsx';
-    const PATH_DATA_MAPPING = __DIR__ . './../../../data/bd_mapping.json';
+    const PATH_DATA = __DIR__ . '/../../../data/bd.xlsx';
+    const PATH_DATA_MAPPING = __DIR__ . '/../../../data/bd_mapping.json';
 
     private $mappingFile;
     private $excellReader;
